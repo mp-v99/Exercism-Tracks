@@ -29,3 +29,23 @@
 // work with the tests, which you can find in ./lasagna.spec.js
 //
 // Good luck preparing some lasagna!
+
+/**
+ * The number of minutes it takes to prepare a single layer.
+ */
+const PREPARATION_MINUTES_PER_LAYER = 2;
+
+export const EXPECTED_MINUTES_IN_OVEN = 40;
+
+export const remainingMinutesInOven = function (currentMinutes) {
+  return EXPECTED_MINUTES_IN_OVEN - currentMinutes;
+}
+
+
+export const preparationTimeInMinutes = function (numberOfLayers) {
+  return numberOfLayers * PREPARATION_MINUTES_PER_LAYER;
+}
+
+export const totalTimeInMinutes = function (numberOfLayers, currentMinutes) {
+  return currentMinutes + preparationTimeInMinutes(numberOfLayers);
+}
