@@ -6,6 +6,8 @@
 // understand types, JSDoc, or TypeScript in order to complete this JavaScript
 // exercise, and can completely ignore this comment block and directive.
 
+import { truncate } from "fs";
+
 // 👋🏽 Hi again!
 //
 // A quick reminder about exercise stubs:
@@ -27,6 +29,13 @@
  * @return {boolean} Whether or not you can execute a fast attack.
  */
 
+const knightIsAwake = true;
+export function canExecuteFastAttack(knightIsAwake) {
+  let canExecuteFastAttack;
+  knightIsAwake ? canExecuteFastAttack = false: canExecuteFastAttack = true;
+  return canExecuteFastAttack;
+}
+
 /**
  * A useful spy captures information, which they can't do if everyone's asleep.
  *
@@ -37,16 +46,34 @@
  * @returns {boolean} Whether or not you can spy on someone.
  */
 
+export function canSpy (knightIsAwake, archerIsAwake, prisonerIsAwake) {
+  if (!knightIsAwake && !archerIsAwake && !prisonerIsAwake) {
+    return false
+  }
+  else {
+    return true
+  }
+}
+
 
 /**
  * You'll get caught by the archer if you signal while they're awake.
  *
  * @param {boolean} archerIsAwake
  * @param {boolean} prisonerIsAwake
- *
+ */
 
-
+export function canSignalPrisoner(archerIsAwake, prisonerIsAwake) {
+  if (!archerIsAwake && prisonerIsAwake) {
+    return true
+  }
+  else {
+    return false
+  }
+}
 /**
+ * 
+ 
  * The final stage in the plan: freeing Annalyn's best friend.
  *
  * @param {boolean} knightIsAwake
@@ -57,3 +84,14 @@
  * @returns {boolean} Whether or not you can free Annalyn's friend.
  */
 
+export function canFreePrisoner(knightIsAwake, archerIsAwake, prisonerIsAwake, petDogIsPresent) {
+  if (!knightIsAwake && !archerIsAwake && prisonerIsAwake && !petDogIsPresent) {
+    return true
+  }
+  else if (petDogIsPresent && !archerIsAwake) {
+    return true
+  }
+  else {
+    return false
+  }
+}
