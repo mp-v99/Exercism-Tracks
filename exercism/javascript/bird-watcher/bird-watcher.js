@@ -4,6 +4,8 @@
 // the @ts-check directive. It will give you helpful autocompletion when
 // implementing this exercise.
 
+import { totalmem } from "os";
+
 /**
  * Calculates the total bird count.
  *
@@ -11,16 +13,14 @@
  * @returns {number} total bird count
  */
 export function totalBirdCount(birdsPerDay) {
-  let total = 0
-  for (let i = 0; i < birdsPerDay.length; i++) {
-    if (i == 0) {
-      total = birdsPerDay[0]
-    }
-    else {
-      total = total + birdsPerDay[i]
-    }
-  }
-  return(total)
+let total = 0;
+for (const birdPerDay of birdsPerDay) {
+
+  total += birdPerDay;
+
+}
+
+return total;
 }
 
 /**
@@ -31,34 +31,21 @@ export function totalBirdCount(birdsPerDay) {
  * @returns {number} birds counted in the given week
  */
 export function birdsInWeek(birdsPerDay, week) {
-  let total = 0
+  let index = (week*7)-7;
+  let total = 0;
 
-  if (week >= 2) {
-    for (let i = 1; i < week; i++) {
-    birdsPerDay.splice(0, 7)
-    }
-    for (let i = 0; i < 7; i++) {
-      if (i == 0) {
-        total = birdsPerDay[0]
-      }
-      else {
-        total = total + birdsPerDay[i]
-      }
-    }
+if (birdsPerDay.length > 6 && week > 1) {
+  for (let i=0; i<index; i++) {
+    birdsPerDay.shift();
   }
+}
 
-  else if (week === 1) {
-  for (let i = 0; i < 7; i++) {
-    if (i == 0) {
-      total = birdsPerDay[0]
-    }
-    else {
-      total = total + birdsPerDay[i]
-    }
-  }
-  }
-  return(total)
+for (let i=0; i<7;i++) {
 
+  total+=birdsPerDay[i];
+}
+
+return total;
 }
 
 /**
@@ -69,9 +56,16 @@ export function birdsInWeek(birdsPerDay, week) {
  * @returns {number[]} corrected bird count data
  */
 export function fixBirdCountLog(birdsPerDay) {
-  for (let i = 0; i < birdsPerDay.length; i += 2) {
-    birdsPerDay[i] += 1;
-  }
 
-  return(birdsPerDay)
+for (let i=0; i<birdsPerDay.length; i++) {
+
+
+    if(i % 2 === 0) {
+      birdsPerDay[i] += 1;
+    }
+  
+
+
+}
+    return birdsPerDay
 }
