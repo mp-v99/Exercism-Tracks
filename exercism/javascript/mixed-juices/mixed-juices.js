@@ -11,6 +11,32 @@
  * @returns {number} time in minutes
  */
 export function timeToMixJuice(name) {
+  let waitingTime;
+
+  // `'Pure Strawberry Joy'` takes 0.5 minutes, `'Energizer'` and `'Green Garden'` take 1.5 minutes each, `'Tropical Island'` takes 3 minutes and `'All or Nothing'` takes 5 minutes.
+
+  switch (name) {
+    case "Pure Strawberry Joy": 
+        waitingTime = 0.5
+        break;
+    case "Energizer":
+        waitingTime = 1.5
+        break;
+    case "Green Garden":
+        waitingTime = 1.5
+        break;
+    case "Tropical Island":
+        waitingTime = 3
+        break;
+    case "All or Nothing": 
+        waitingTime = 5
+        break;
+    default:
+        waitingTime = 2.5
+        break;
+  }
+
+  return waitingTime;
 }
 
 /**
