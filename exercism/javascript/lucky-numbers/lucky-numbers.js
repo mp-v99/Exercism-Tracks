@@ -23,7 +23,6 @@ export function luckyNumber(value) {
   let str = String(value)
   let reverse = str.split("").reverse().join("");
 
-
   return reverse === str
 
 }
@@ -36,5 +35,14 @@ export function luckyNumber(value) {
  * @returns {string} error message
  */
 export function errorMessage(input) {
-  throw new Error('Implement the errorMessage function');
+  let errorMessage = '';
+  let num = Number(input)
+  if (input == null || input === '') {
+    errorMessage = "Required field"
+  }
+  else if (num === 0 || Number.isNaN(num)) {
+    errorMessage = "Must be a number besides 0"
+  }
+
+  return errorMessage
 }
