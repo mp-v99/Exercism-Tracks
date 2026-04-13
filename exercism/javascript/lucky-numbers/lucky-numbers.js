@@ -8,7 +8,9 @@
  * @returns {number} sum of the two arrays
  */
 export function twoSum(array1, array2) {
-  throw new Error('Implement the twoSum function');
+  let num1 = array1.join("");
+  let num2 = array2.join("");
+  return Number(num1) + Number(num2)
 }
 
 /**
